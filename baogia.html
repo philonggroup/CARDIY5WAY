@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>PHIẾU BÁO GIÁ &amp; NGHIỆM THU - PHI LONG AUTO</title>
+<style>
+@page { size: A4; margin: 0; }
+html, body{ width:210mm; max-width:210mm; margin:0 auto; overflow-x:hidden; }
+*{ box-sizing:border-box; margin:0; padding:0; }
+body{ font-family:"Liberation Sans","DejaVu Sans",Arial,sans-serif; color:#111;
+      -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+.page{ width:210mm; max-width:210mm; min-height:297mm; padding:6mm 6.5mm 5mm; position:relative;
+       overflow:hidden; }
+.cjpage{ --nv:#124A95; --nv2:#2C63B0; --nvl:#EAF0FA; --bd:#B9CAE3; --gn:#1F9D55; --or:#F0A31C; --rd:#D0342C;
+         --cg:#B2DDC5; --cy:#FBE0AE; --cr:#EEB9B7; font-size:7pt; }
+.corner{ position:absolute; top:0; right:0; width:0; height:0;
+         border-top:15mm solid var(--nv); border-left:15mm solid transparent; }
+.ic{ width:3.4mm; height:3.4mm; flex:0 0 auto; }
+
+/* header */
+.hd{ display:flex; align-items:center; gap:3mm; }
+.lg{ width:50mm; } .lg img{ width:100%; display:block; }
+.qr{ width:19mm; text-align:center; } .qr img{ width:14mm; display:block; margin:0 auto; }
+.qr .cap{ font-size:5.2pt; font-weight:700; color:var(--or); margin-top:.4mm; }
+.tt{ flex:1; text-align:center; padding-right:12mm; }
+.no{ font-size:7pt; color:var(--nv); font-weight:700; display:flex; justify-content:center;
+     align-items:flex-end; gap:1.4mm; }
+.no .fi{ min-width:28mm; max-width:38mm; text-align:center; font-weight:800; color:#B02020; }
+.mn{ font-size:15pt; font-weight:800; margin-top:.6mm; color:#16202C; letter-spacing:.3px; }
+.sb{ font-size:6pt; color:#555; margin-top:.5mm; }
+
+/* info */
+.info{ margin-top:1.8mm; border-top:.9mm solid var(--nv); padding-top:1.6mm; }
+.info .r{ display:flex; gap:3mm; margin-bottom:1.2mm; }
+.info .f{ flex:1; display:flex; align-items:flex-end; font-size:7pt; }
+.info .f b{ font-weight:400; white-space:nowrap; }
+
+/* need + tags */
+.needrow{ display:flex; align-items:stretch; gap:2mm; margin-top:.6mm; }
+.need{ flex:1; border:.7pt solid var(--nv); border-radius:1.2mm; padding:1.1mm 2mm; font-size:7pt;
+       display:flex; align-items:flex-end; gap:.6mm; color:#111; }
+.need > .ic{ color:var(--nv); margin-right:1mm; }
+.need b{ color:var(--nv); font-weight:800; white-space:nowrap; }
+.need .cb{ display:inline-block; width:2.5mm; height:2.5mm; border:.6pt solid var(--nv); border-radius:.4mm;
+           margin:0 .9mm 0 2.6mm; flex:0 0 auto; position:relative; }
+.tags{ display:flex; gap:1.2mm; }
+.tg{ width:22mm; text-align:center; color:#fff; font-weight:800; font-size:7pt; padding:1.3mm 0;
+     border-radius:1mm; }
+.tg.g{ background:var(--gn);} .tg.y{ background:var(--or);} .tg.r{ background:var(--rd);}
+.bar{ margin-top:1.4mm; }
+.bar .bb{ background:var(--nv); color:#fff; font-size:8.4pt; font-weight:800; padding:1.3mm 4mm;
+          width:62%; display:flex; align-items:center; gap:1.6mm;
+          clip-path:polygon(0 0, 100% 0, calc(100% - 7mm) 100%, 0 100%); }
+
+/* section frame */
+.sec{ display:flex; margin-top:1.4mm; }
+.tab{ width:6mm; background:var(--nv); color:#fff; font-weight:700; font-size:6.2pt; writing-mode:vertical-rl;
+      transform:rotate(180deg); display:flex; align-items:center; justify-content:center;
+      border-radius:1.2mm 0 0 1.2mm; letter-spacing:.3px; }
+.body{ flex:1; border:.7pt solid var(--bd); border-left:0; border-radius:0 1.2mm 1.2mm 0; padding:1.4mm 2mm; }
+
+/* generic line */
+.ln{ display:flex; align-items:flex-end; gap:.8mm; font-size:6.5pt; padding:.42mm 0; }
+.ln.nb{ padding:.6mm 0; }
+.ln .t{ white-space:nowrap; }
+.ln .fw{ flex:1; display:flex; min-width:0; margin:0 .8mm; }
+.ln .u{ font-size:6pt; color:#444; white-space:nowrap; }
+.ln .lgd{ font-size:6.2pt; margin-left:2.5mm; }
+.fi{ display:block; flex:1 1 auto; min-width:8mm; min-height:3.2mm; border-bottom:.5pt dotted #777;
+     font-size:6.6pt; padding:0 .7mm; outline:none; white-space:pre-wrap; overflow-wrap:anywhere;
+     word-break:break-word; line-height:1.25; }
+.fi:focus{ background:#FFF7DC; border-bottom-color:var(--nv); }
+
+/* chips */
+.ck{ display:inline-flex; gap:.9mm; flex:0 0 auto; margin-left:1.2mm; }
+.ck i{ width:5.4mm; height:2.8mm; border-radius:.7mm; display:inline-block; cursor:pointer; }
+.ck .k1{ background:var(--cg); border:.4pt solid #8EC5A6; }
+.ck .k2{ background:var(--cy); border:.4pt solid #E3BC85; }
+.ck .k3{ background:var(--cr); border:.4pt solid #D79A97; }
+.ck .k1.on{ background:var(--gn); border-color:#177A41; box-shadow:inset 0 0 0 .45mm #fff; }
+.ck .k2.on{ background:var(--or); border-color:#C6830D; box-shadow:inset 0 0 0 .45mm #fff; }
+.ck .k3.on{ background:var(--rd); border-color:#A32821; box-shadow:inset 0 0 0 .45mm #fff; }
+.cb.pick.on{ background:var(--nv); }
+.cb.pick.on:after{ content:"\2713"; position:absolute; left:.2mm; top:-1mm; font-size:5.6pt; color:#fff;
+                   font-weight:800; line-height:1; }
+
+/* sec1 */
+.s1{ display:flex; gap:3mm; }
+.s1l{ flex:1; } .s1r{ flex:0 0 44%; border-left:.5pt solid var(--bd); padding-left:3mm; }
+.wrow{ display:flex; gap:2mm; margin-top:.8mm; }
+.wrow.sm{ margin-top:1mm; }
+.wc{ flex:1; text-align:center; }
+.wo{ width:7.6mm; height:7.6mm; border:.6pt solid var(--bd); background:var(--nvl); border-radius:50%;
+     margin:0 auto .4mm; padding:1.3mm; color:var(--nv); }
+.wm{ width:100%; height:100%; display:block; }
+.wl{ font-size:5.8pt; }
+.lamps{ display:flex; gap:1.4mm; margin-bottom:.8mm; }
+.lp{ flex:1; text-align:center; }
+.lo{ width:7mm; height:7mm; border:.6pt solid #A9BFDF; background:#F2F6FC; border-radius:50%;
+     margin:0 auto .4mm; padding:1.2mm; color:var(--nv2); cursor:pointer; }
+.lo.on{ background:var(--or); border-color:#C6830D; color:#fff; }
+.lo .ic{ width:100%; height:100%; }
+.ln2{ font-size:5.5pt; line-height:1.15; }
+
+/* sec2 */
+.s2{ display:flex; gap:2.2mm; }
+.s2 .col{ width:30%; } .s2 .mid{ flex:1; }
+.ttl{ font-size:6.6pt; font-weight:800; color:var(--nv); margin-bottom:.8mm; display:flex;
+      align-items:center; gap:1.2mm; }
+.ttl em{ font-style:normal; font-weight:400; font-size:5.8pt; color:#666; }
+.card{ border:.6pt solid var(--bd); border-radius:1.2mm; padding:1.1mm 1.4mm; margin-bottom:1.2mm; }
+.card .ch{ display:flex; align-items:center; gap:1.2mm; font-size:7pt; color:var(--nv); margin-bottom:.5mm; }
+.card .ch b{ font-weight:800; } .card .ch em{ font-style:normal; font-size:5.8pt; color:#777; }
+.carbox{ margin-top:.8mm; text-align:center; } .carbox img{ width:100%; max-height:36mm; object-fit:contain; display:block; }
+.capl{ font-size:6pt; text-align:center; margin-top:.4mm; }
+.spare{ border:.6pt solid var(--bd); border-radius:1.2mm; padding:1mm 1.4mm; margin-top:1mm;
+        display:flex; align-items:flex-end; gap:1.2mm; font-size:7pt; color:var(--nv); }
+.spare b{ white-space:nowrap; } .spare span{ font-size:6.2pt; color:#444; }
+
+/* sec3 */
+.s3{ display:flex; gap:2.2mm; }
+.bx{ flex:1; border:.6pt solid var(--bd); border-radius:1.2mm; padding:1.1mm 1.4mm; }
+.bh{ display:flex; align-items:center; gap:1.2mm; font-size:6.6pt; color:var(--nv);
+     border-bottom:.5pt solid var(--bd); padding-bottom:.5mm; margin-bottom:.5mm; }
+.bh b{ font-weight:800; } .bh em{ font-style:normal; font-size:5.6pt; color:#777; }
+
+/* sec4 */
+.s4{ display:flex; gap:2.2mm; }
+.s4l{ flex:0 0 34%; display:flex; } .s4l .bx{ width:100%; }
+.s4r{ flex:1; display:flex; } .s4r .bx{ width:100%; }
+.s4g{ display:flex; gap:2.4mm; }
+.s4g .gc{ flex:1; }
+.gh{ font-size:6pt; font-weight:700; color:var(--nv2); text-align:right; margin-bottom:.3mm; }
+.gh.mt{ margin-top:1mm; }
+
+/* footer */
+.ftr{ display:flex; gap:3mm; margin-top:1.6mm; }
+.ftr .sg{ flex:1; display:flex; align-items:flex-end; font-size:7.2pt; font-weight:800; color:var(--nv); gap:1.4mm; }
+.ftr .sg.sm{ flex:0 0 22%; }
+
+
+  /* --- can chinh cho day trang A4 --- */
+  .need .op{ white-space:nowrap; display:inline-flex; align-items:center; }
+  .cjpage{ font-size:7.3pt; }
+  .sec{ margin-top:2.4mm; }
+  .body{ padding:2.3mm 2.4mm; }
+  .ln{ font-size:6.9pt; padding:.95mm 0; }
+  .ck i{ width:5.8mm; height:3mm; }
+  .card{ padding:1.7mm 1.8mm; margin-bottom:2mm; }
+  .card .ch{ font-size:7.3pt; margin-bottom:.8mm; }
+  .ttl{ font-size:7pt; margin-bottom:1.1mm; white-space:nowrap; }
+  .carbox img{ max-height:52mm; }
+  .lo{ width:8.4mm; height:8.4mm; padding:1.5mm; }
+  .ln2{ font-size:5.9pt; }
+  .wo{ width:9mm; height:9mm; padding:1.6mm; }
+  .wl{ font-size:6.2pt; }
+  .bh{ font-size:7pt; padding-bottom:.7mm; margin-bottom:.7mm; }
+  .gh{ font-size:6.3pt; }
+  .fi{ min-height:3.5mm; font-size:6.9pt; }
+  .spare{ padding:1.3mm 1.6mm; margin-top:1.4mm; }
+  .ftr{ margin-top:2.4mm; font-size:7.6pt; }
+  .mn{ font-size:16pt; }
+
+  /* --- o tick can thang cot ben phai, nhan sua duoc, them/xoa dong --- */
+  .ln .t{ white-space:normal; }
+  .ln .lbl{ outline:none; }
+  .ln .lbl:focus, .bh .lbl:focus, .card .ch .lbl:focus{ background:#FFF7DC; border-radius:.6mm; }
+  .ln .u{ min-width:5.4mm; text-align:right; }
+  .ck{ margin-left:auto; }
+  .ln .del{ border:0; background:none; color:#C0392B; font-size:9pt; line-height:1; cursor:pointer;
+            opacity:0; padding:0 0 0 1mm; flex:0 0 auto; font-family:inherit; }
+  .ln:hover .del{ opacity:.75; }
+  .tools{ margin-top:.6mm; }
+  .add{ font-family:inherit; font-size:5.8pt; color:var(--nv2); background:#fff; cursor:pointer;
+        border:.4pt dashed var(--bd); border-radius:1mm; padding:.3mm 1.6mm; }
+  .add:hover{ background:var(--nvl); }
+
+  /* --- goc phai cong theo mau, co ten thuong hieu --- */
+  .corner{ position:absolute; top:0; right:0; width:34mm; height:19mm; border:0; overflow:hidden; }
+  .corner .cn{ width:100%; height:100%; display:block; }
+  .cnt{ position:absolute; top:2.6mm; right:2.6mm; text-align:right; color:#fff; line-height:1.05; }
+  .cnt b{ display:block; font-size:8.4pt; font-weight:800; letter-spacing:.4px; }
+  .cnt i{ display:block; font-style:normal; font-size:5.4pt; letter-spacing:1.6px; color:#F0A31C; font-weight:700; }
+  .tt{ padding-right:4mm; }
+  .mn{ font-size:14.5pt; white-space:nowrap; }
+  .sb{ white-space:nowrap; }
+  .ln.nb .ck{ margin-left:1.4mm; }
+  /* thanh hang muc + 3 nhan trang thai cung mot hang */
+  .barrow{ display:flex; align-items:stretch; gap:1.6mm; margin-top:1.4mm; }
+  .barrow .bb{ background:var(--nv); color:#fff; font-size:8.4pt; font-weight:800; padding:1.3mm 4mm;
+               flex:1; display:flex; align-items:center; gap:1.6mm;
+               clip-path:polygon(0 0, 100% 0, calc(100% - 7mm) 100%, 0 100%); }
+  .barrow .tags{ display:flex; gap:1.2mm; align-items:stretch; }
+  .barrow .tg{ display:flex; align-items:center; justify-content:center; padding:0; }
+  .needrow .need{ flex:1 1 100%; }
+
+  .colh{ margin-left:auto; font-size:5.9pt; font-weight:700; color:var(--nv2); white-space:nowrap;
+         letter-spacing:.2px; }
+  /* --- bang gam xe --- */
+  .s4b{ display:flex; gap:2.6mm; }
+  .s4b .gcol{ flex:1; }
+  .gtb{ width:100%; border-collapse:collapse; }
+  .gtb td, .gtb th{ border:.5pt solid var(--bd); padding:.42mm 1.2mm; font-size:6.4pt; }
+  .gtb th{ background:var(--nvl); color:var(--nv); font-weight:800; text-align:left; }
+  .gtb th.c{ text-align:center; width:15mm; }
+  .gtb td.c{ text-align:center; white-space:nowrap; width:15mm; }
+  .gtb td.nm{ white-space:normal; }
+  .gtb td.nm .lbl{ outline:none; }
+  .gtb td.nm .fi{ display:inline-block; vertical-align:bottom; width:auto; min-width:12mm; max-width:100%;
+                  min-height:2.7mm; font-size:6.1pt; margin-left:1.2mm; }
+  .gtb td.nm .del{ opacity:0; }
+  .gtb tr:hover td.nm .del{ opacity:.75; }
+  .sq{ width:3.5mm; height:2.7mm; border:.7pt solid #999; border-radius:.7mm; display:inline-block;
+       margin:0 .35mm; cursor:pointer; }
+  .sq.g{ border-color:var(--gn);} .sq.y{ border-color:var(--or);} .sq.r{ border-color:var(--rd);}
+  .sq.g.on{ background:var(--gn);} .sq.y.on{ background:var(--or);} .sq.r.on{ background:var(--rd);}
+  .gnote{ font-size:5.9pt; color:#666; margin-top:.8mm; }
+  /* --- khuyen nghi + o ky --- */
+  .rec{ display:flex; align-items:flex-end; gap:1.4mm; margin-top:2mm; font-size:7.6pt; color:var(--nv); }
+  .rec b{ white-space:nowrap; font-weight:800; }
+  .signs{ display:flex; gap:3mm; margin-top:1.4mm; }
+  .signs .sg{ flex:1; border:.7pt solid var(--nv); border-radius:1.4mm; height:14mm; text-align:center;
+              padding-top:1.6mm; }
+  .signs .sg .t{ font-size:7.8pt; font-weight:800; color:var(--nv); }
+  .signs .sg .s{ font-size:5.9pt; color:#666; margin-top:.4mm; }
+
+  .lg{ width:66mm; }
+  .qr{ width:23mm; }
+  .qr img{ width:18mm; }
+  .qr .cap{ font-size:5.6pt; color:var(--nv); }
+  .tt{ padding-right:0; padding-left:2mm; }
+
+  /* ================= TOI UU CHU: de doc, dong deu, tuong phan tot ================= */
+  body{ font-family:"Segoe UI Variable Text","Segoe UI",Roboto,"Noto Sans","Helvetica Neue",
+        "Liberation Sans",Arial,sans-serif; color:#1A1F27; -webkit-font-smoothing:antialiased;
+        text-rendering:optimizeLegibility; }
+  .cjpage{ font-size:7.4pt; line-height:1.32; }
+
+  /* tieu de */
+  .mn{ font-size:15pt; font-weight:700; letter-spacing:.2px; color:#14203A; }
+  .sb{ font-size:6.6pt; color:#4A5568; letter-spacing:.1px; }
+  .no{ font-size:7.4pt; letter-spacing:.2px; }
+
+  /* thong tin xe */
+  .info .f{ font-size:7.4pt; }
+  .info .f b{ color:#3A4453; }
+
+  /* thanh & tab */
+  .barrow .bb{ font-size:9pt; letter-spacing:.4px; }
+  .tg{ font-size:7.4pt; letter-spacing:.3px; }
+  .tab{ font-size:6.8pt; letter-spacing:.5px; font-weight:600; }
+  .need{ font-size:7.4pt; } .need b{ letter-spacing:.15px; }
+
+  /* tieu de khoi */
+  .ttl{ font-size:7.4pt; letter-spacing:.1px; }
+  .ttl em{ font-size:6.3pt; color:#5A6473; }
+  .bh{ font-size:7.4pt; } .bh em{ font-size:6.1pt; color:#5A6473; }
+  .card .ch{ font-size:7.6pt; } .card .ch em{ font-size:6.2pt; color:#5A6473; }
+
+  /* dong hang muc */
+  .ln{ font-size:7.1pt; padding:1.05mm 0; line-height:1.3; }
+  .fi{ font-size:7.1pt; min-height:3.7mm; line-height:1.3; color:#12263F; }
+  .ln .u{ font-size:6.5pt; color:#3A4453; }
+  .ln .lgd{ font-size:6.6pt; color:#3A4453; }
+  .colh{ font-size:5.9pt; }
+
+  /* nhan nho */
+  .ln2{ font-size:6.2pt; line-height:1.2; color:#2C3644; }
+  .wl{ font-size:6.4pt; color:#2C3644; }
+  .qr .cap{ font-size:6pt; letter-spacing:.3px; }
+  .capl{ font-size:6.4pt; color:#2C3644; }
+  .capl.sm{ font-size:6pt; color:#5A6473; }
+  .gnote{ font-size:6.2pt; color:#5A6473; }
+
+  /* bang gam */
+  .gtb td, .gtb th{ font-size:6.8pt; padding:.62mm 1.4mm; }
+  .gtb th{ letter-spacing:.2px; }
+  .gtb td.nm .fi{ font-size:6.6pt; min-height:3mm; }
+
+  /* chan trang */
+  .rec{ font-size:7.8pt; }
+  .signs .sg .t{ font-size:8pt; letter-spacing:.3px; }
+  .signs .sg .s{ font-size:6.2pt; color:#5A6473; }
+
+  /* net ke nhat hon cho chu noi bat */
+  .ln .dt, .fi{ border-bottom-color:#8892A4; }
+
+  /* ===== can lai cho vua khung in A4 (khong can thu nho khi in) ===== */
+  .ln{ padding:.3mm 0; }
+  .gtb td, .gtb th{ padding:.22mm 1.3mm; font-size:6.5pt; }
+  .gtb td.nm .fi{ min-height:2.8mm; }
+  .card{ padding:1mm 1.5mm; margin-bottom:1mm; }
+  .bx{ padding:1mm 1.4mm; }
+  .sec{ margin-top:1.6mm; }
+  .body{ padding:1.6mm 2mm; }
+  .carbox img{ max-height:37mm; }
+  .lp .o{ width:6.2mm; height:6.2mm; padding:1.1mm; }
+  .wo{ width:8mm; height:8mm; padding:1.4mm; }
+  .lg{ width:56mm; }
+  .signs .sg{ height:12mm; }
+  .fi{ min-height:3.3mm; }
+  .spare{ padding:1mm 1.4mm; margin-top:1mm; }
+
+  .qr img{ width:15.5mm; }
+  .qr{ width:21mm; }
+  .sec{ margin-top:1.3mm; }
+  .body{ padding:1.4mm 2mm; }
+  .signs .sg{ height:11mm; }
+  .lp .o{ width:5.9mm; height:5.9mm; padding:1mm; }
+  .fitting .tools, .fitting .del{ display:none!important; }
+@media print{
+  .del, .add, .tools{ display:none!important; }
+  .lbl{ background:transparent!important; }
+  .fi, .fi:focus{ background:transparent!important; }
+  .page{ min-height:0; }
+  .sec, .card, .bx{ break-inside:avoid; page-break-inside:avoid; }
+}
+
+  /* ================= TONG MAU XANH - VANG, CHU NOI BAT ================= */
+  .cjpage{ --yl:#F5A81B; --yll:#FFF3DA; --ylb:#E8C583; }
+  /* tieu de bang: nen vang nhat, chu xanh dam */
+  .cjpage .bsafe th, .cjpage .gtb th{ background:var(--yll)!important; color:#0E3C7A!important;
+                                      border-color:var(--ylb)!important; font-weight:800; }
+  /* thanh hang muc: vien vang duoi */
+  .cjpage .barrow{ position:relative; }
+  .cjpage .barrow .bb{ box-shadow:inset 0 -1.1mm 0 var(--yl); }
+  /* tab doc: vach vang */
+  .cjpage .tab{ box-shadow:inset 1mm 0 0 var(--yl); }
+  /* tieu de khoi + the: gach chan vang */
+  .cjpage .ttl, .cjpage .bh{ border-bottom:.6pt solid var(--ylb); padding-bottom:.6mm; }
+  .cjpage .card .ch{ border-bottom:.6pt solid var(--ylb); padding-bottom:.5mm; }
+  .cjpage .card .ch b, .cjpage .ttl, .cjpage .bh b{ color:#0E3C7A; }
+  /* khung nhu cau khach: nen vang nhat cho noi bat */
+  .cjpage .need{ background:var(--yll); border-color:var(--yl); }
+  .cjpage .need b{ color:#0E3C7A; }
+  /* chu hang muc dam va dam mau hon */
+  .cjpage .ln, .cjpage .ln .t{ color:#16233A; font-weight:500; }
+  .cjpage .bsafe td, .cjpage .gtb td{ color:#16233A; font-weight:500; }
+  .cjpage .fi{ color:#0B1B2E; font-weight:600; }
+  .cjpage .wl, .cjpage .ln2{ color:#16233A; font-weight:600; }
+  /* so phieu + chu ky */
+  .cjpage .signs .sg{ border-color:var(--nv); box-shadow:inset 0 -1.1mm 0 var(--yll); }
+
+  /* ================= LETTERHEAD CONG TY ================= */
+  .lh{ display:flex; align-items:center; gap:4mm; }
+  .lh .lg{ width:46mm; flex:0 0 46mm; } .lh .lg img{ width:100%; display:block; }
+  .lh .lhc{ flex:1; text-align:center; }
+  .lh .slg{ font-size:12.6pt; font-weight:800; font-style:italic; color:#1F3C88; letter-spacing:.2px;
+            line-height:1.15; }
+  .lh .lhl{ font-size:6.9pt; color:#25314A; margin-top:.7mm; }
+  .lh .lhl b{ font-weight:700; color:#1F3C88; }
+  .lh .lhl .sep{ color:#8E9AB0; margin:0 1.2mm; }
+  .lh .qr{ width:19mm; flex:0 0 19mm; text-align:center; }
+  .lh .qr img{ width:15mm; display:block; margin:0 auto; }
+  .lh .qr .cap{ font-size:5.6pt; font-weight:700; color:var(--nv); margin-top:.4mm; }
+  .rule2{ height:.9mm; background:var(--nv); margin-top:1.4mm; }
+  .ttl2{ display:flex; align-items:flex-end; gap:3mm; margin-top:1.6mm; }
+  .ttl2 .mn2{ flex:1; text-align:center; font-size:14pt; font-weight:800; color:#14203A;
+              letter-spacing:.3px; white-space:nowrap; }
+  .ttl2 .no2{ flex:0 0 42mm; display:flex; align-items:flex-end; font-size:7.2pt; font-weight:700;
+              color:var(--nv); gap:1.2mm; }
+  .ttl2 .sb2{ flex:0 0 42mm; font-size:6.2pt; color:#5A6473; }
+
+  .ttl2 .sb2{ display:none; }
+  .ttl2 .mn2{ line-height:1.1; }
+  .ttl2 .mn2 em{ display:block; font-style:normal; font-size:6.3pt; font-weight:400; color:#5A6473;
+                 margin-top:.5mm; letter-spacing:0; }
+  .ttl2{ margin-top:1.2mm; }
+
+  .ttl2 .sb2{ display:block!important; visibility:hidden; flex:0 0 42mm; }
+  .lh .slg{ font-size:11.6pt; }
+  .lh .lhl{ font-size:6.5pt; margin-top:.5mm; }
+  .lh .qr img{ width:14mm; }
+  .rule2{ margin-top:1.1mm; }
+
+  /* gach ngang duoi tieu de: lam chim, khong con dam net */
+  .info{ border-top:.4pt solid #D3DCEB!important; padding-top:1.4mm; }
+
+  .cjpage .tbwrap .tools{ margin-top:.3mm; }
+  .cjpage .tbwrap .add{ font-family:inherit; font-size:5.8pt; color:var(--nv2); background:#fff;
+                        cursor:pointer; border:.4pt dashed var(--bd); border-radius:1mm; padding:.2mm 1.6mm; }
+  @media print{ .cjpage .tbwrap .tools{ display:none!important; } }
+
+  /* ================= TRANG 2 - PHIEU NGHIEM THU ================= */
+  .p2 .barrow2{ display:flex; align-items:center; gap:2mm; margin-top:2mm; }
+  .p2 .bb2{ background:var(--nv); color:#fff; font-size:8pt; font-weight:700; padding:1.1mm 4mm;
+            letter-spacing:.3px; clip-path:polygon(0 0, 100% 0, calc(100% - 5mm) 100%, 0 100%);
+            padding-right:8mm; }
+  .p2 .due{ flex:1; display:flex; align-items:flex-end; justify-content:flex-end; gap:2.5mm;
+            font-size:6.8pt; color:#3A4453; }
+  .p2 .due .fi{ max-width:44mm; }
+  .p2 .lg2{ display:inline-flex; align-items:center; gap:1mm; font-size:6.6pt; }
+  .p2 .lg2 i{ width:3.4mm; height:3.4mm; border-radius:.6mm; display:inline-block; }
+  .p2 .lg2 i.ok{ border:.6pt solid var(--gn); background:#E7F5EC; }
+  .p2 .lg2 i.no{ border:.6pt solid var(--rd); background:#FBEBEA; }
+
+  .p2 table.tb2{ width:100%; border-collapse:collapse; margin-top:1mm; }
+  .p2 .tb2 th{ background:var(--nvl); color:var(--nv); font-size:6.6pt; font-weight:700;
+               border:.5pt solid var(--bd); padding:.9mm 1.2mm; text-align:center; letter-spacing:.2px; }
+  .p2 .tb2 td{ border:.5pt solid var(--bd); padding:0 1.2mm; height:6.4mm; font-size:6.9pt; }
+  .p2 .tb2 td.stt{ text-align:center; color:#3A4453; font-size:6.6pt; }
+  .p2 .tb2 td.c{ text-align:right; }
+  .p2 .tb2 td .fi{ border-bottom:0; min-height:0; padding:0; }
+  .p2 .tb2 td.c .fi{ text-align:right; }
+  .p2 .tb2 td.amount{ text-align:right; font-weight:700; color:var(--nv); background:#FAFCFF; }
+  .p2 .tb2 tr.tot td{ background:var(--nvl); font-weight:700; color:var(--nv); text-align:right;
+                      height:5.8mm; font-size:7.2pt; letter-spacing:.2px; }
+  .p2 .tb2 tr.tot td.total{ text-align:right; }
+
+  .p2 .propbox{ border:.6pt solid var(--bd); border-radius:1.2mm; padding:1.4mm 1.8mm; margin-top:1mm; }
+  .p2 .propbox .fi{ min-height:4.4mm; }
+
+  .p2 .accbox{ display:flex; gap:2.4mm; margin-top:1mm; }
+  .p2 .acol{ flex:1; border:.6pt solid var(--bd); border-radius:1.2mm; padding:1.2mm 1.6mm; }
+  .p2 .acol .ln{ padding:.75mm 0; align-items:center; }
+  .p2 .acol .ln .t{ white-space:normal; flex:1; line-height:1.25; }
+  .ck2{ display:inline-flex; gap:1.2mm; margin-left:auto; flex:0 0 auto; }
+  .ck2 i{ width:4.2mm; height:4.2mm; border-radius:.7mm; display:inline-block; cursor:pointer; }
+  .ck2 i.ok{ border:.7pt solid var(--gn); background:#EAF6EF; }
+  .ck2 i.no{ border:.7pt solid var(--rd); background:#FCEEED; }
+  .ck2 i.ok.on{ background:var(--gn); box-shadow:inset 0 0 0 .5mm #fff; }
+  .ck2 i.no.on{ background:var(--rd); box-shadow:inset 0 0 0 .5mm #fff; }
+
+
+  /* bang dich vu theo cap do */
+  .p2 .tb2 tr.grp td{ background:#EDF2FB; color:var(--nv); font-weight:700; font-size:6.7pt;
+                      letter-spacing:.5px; height:5mm; padding:0 2mm; }
+  .p2 .tb2 td.ira{ text-align:center; }
+  .p2 .bg{ display:inline-block; width:4.4mm; height:4.4mm; line-height:4.4mm; text-align:center;
+           border-radius:.8mm; font-size:5.8pt; font-weight:700; }
+  .p2 .bg.i{ background:#E7EEFA; color:var(--nv); border:.4pt solid #B9CAE3; }
+  .p2 .bg.r{ background:#FBEBEA; color:var(--rd); border:.4pt solid #E3B4B1; }
+  .p2 .bg.a{ background:#FDF2DE; color:#9A6A08; border:.4pt solid #E8CC93; }
+  .p2 .tb2 td.st{ text-align:center; }
+  .p2 .tb2 td.st .ck2{ margin:0; justify-content:center; }
+  .p2 .tb2 td.xn{ text-align:center; }
+  .p2 .tb2 td.xn .cb{ display:inline-block; width:3mm; height:3mm; border:.6pt solid var(--nv);
+                      border-radius:.4mm; position:relative; cursor:pointer; }
+  .p2 .tb2 tr{ position:relative; }
+  .p2 .tb2 .del{ position:absolute; right:-4.5mm; top:50%; transform:translateY(-50%); }
+  .p2 .tb2 td{ height:5.6mm; }
+  .p2 .hint{ font-size:6.2pt; color:#5A6473; }
+
+  .p2 .tb2 td{ height:4.05mm; }
+  .p2 .tb2 th{ padding:.7mm 1.2mm; }
+  .p2 .tb2 tr.grp td{ height:4.4mm; }
+  .p2 .tb2 tr.tot td{ height:5.2mm; }
+  .p2 .barrow2{ margin-top:1.4mm; }
+  .p2 .propbox{ padding:1.1mm 1.6mm; }
+  .p2 .propbox .fi{ min-height:3.5mm; }
+  .p2 .acol .ln{ padding:.38mm 0; }
+  .p2 .acol{ padding:1mm 1.4mm; }
+
+  .p2 .propbox .ln.pl{ padding:.15mm 0; align-items:flex-end; }
+  .p2 .propbox .tools{ margin-top:.2mm; }
+  .p2 .tools{ margin-top:.4mm; }
+  .p2 .propbox .ln.pl .fi{ flex:1; }
+  .p2 .tb2 td.xnc{ position:relative; }
+  .p2 .tb2 td.xnc .del{ position:absolute; right:-4.5mm; top:50%; transform:translateY(-50%); }
+  .p2 .tb2 td .fi{ display:block; width:100%; }
+
+  /* thanh chon so km -> cap bao duong */
+  .p2 .kmbar{ display:flex; align-items:flex-end; gap:1.6mm; border:.7pt solid var(--nv);
+              border-radius:1.4mm; padding:1.2mm 2.4mm; margin-top:1.4mm; font-size:7.2pt; }
+  .p2 .kmbar .k1{ font-weight:700; color:var(--nv); white-space:nowrap; }
+  .p2 .kmbar .fi.km{ flex:0 0 26mm; text-align:center; font-weight:700; font-size:7.6pt; color:#B02020; }
+  .p2 .kmbar .u{ color:#3A4453; }
+  .p2 .kmbar .arw{ color:var(--nv); font-weight:700; margin:0 .6mm; }
+  .p2 .lvb{ background:var(--nvl); border:.6pt solid var(--bd); color:var(--nv); font-weight:700;
+            border-radius:1mm; padding:.5mm 2.4mm; white-space:nowrap; }
+  .p2 .lvb.on{ background:var(--nv); color:#fff; border-color:var(--nv); }
+  .p2 .mile{ font-size:6.4pt; color:#3A4453; white-space:nowrap; }
+  .p2 .note{ flex:1; text-align:right; font-size:6.1pt; color:#5A6473; }
+  /* nhan IRA sau khi tinh */
+  .p2 .bg.na{ background:#F3F5F8; color:#98A2B3; border:.4pt solid #DFE4EC; }
+  .p2 tr.hi-r td{ background:#FDF3F2; }
+  .p2 tr.hi-a td{ background:#FDF8EC; }
+  .p2 tr.hi-r td.amount, .p2 tr.hi-a td.amount{ background:transparent; }
+
+  .p2 .policy{ padding:1.1mm 1.8mm; margin-top:1.2mm; font-size:6.1pt; line-height:1.35; }
+  .p2 .signs{ margin-top:1.4mm; }
+  .p2 .signs .sg{ height:9.5mm; padding-top:.9mm; }
+  .p2 .ck2 i{ width:3.8mm; height:3.8mm; }
+  .p2 .policy{ border:.6pt solid var(--bd); border-radius:1.2mm; padding:1.6mm 2mm; margin-top:2mm;
+               font-size:6.3pt; line-height:1.45; text-align:justify; color:#3A4453; }
+  .p2 .signs{ display:flex; gap:3mm; margin-top:2mm; }
+  .p2 .signs .sg{ flex:1; border:.7pt solid var(--nv); border-radius:1.4mm; height:17mm;
+                  text-align:center; padding-top:2mm; }
+  .p2 .signs .sg .t{ font-size:7.6pt; font-weight:700; color:var(--nv); letter-spacing:.3px; }
+  .p2 .signs .sg .s{ font-size:6.2pt; color:#5A6473; margin-top:.4mm; }
+
+  /* nen cho vua A4 khi da co 31 hang muc */
+  .p2 .tb2 td{ height:3.2mm; font-size:6.4pt; line-height:1.15; }
+  .p2 .tb2 td .fi{ min-height:2.2mm; line-height:1.15; }
+  .p2 .bg{ width:3.2mm; height:3.2mm; line-height:3.2mm; font-size:5pt; }
+  .p2 .tb2 td.dc{ line-height:1; }
+  .p2 .tb2 td.dc .del{ font-size:6.5pt; line-height:1; padding:0; display:inline-block; height:2.6mm; }
+  .p2 .tb2 th{ padding:.4mm 1.1mm; font-size:6.1pt; }
+  .p2 .tb2 th{ padding:.5mm 1.2mm; font-size:6.3pt; }
+  .p2 .tb2 tr.grp td{ height:3.5mm; font-size:6.3pt; }
+  .p2 .tb2 tr.tot td{ height:4.6mm; font-size:7pt; }
+  .p2 .ck2 i{ width:3.4mm; height:3.4mm; }
+  .p2 .tb2 td.xn .cb{ width:2.8mm; height:2.8mm; }
+  .p2 .kmbar{ padding:.9mm 2mm; margin-top:1.2mm; }
+  .p2 .barrow2{ margin-top:.85mm; }
+  .p2 .propbox .fi{ min-height:3.2mm; }
+  .p2 .acol .ln{ padding:.12mm 0; }
+  .p2 .policy{ font-size:5.7pt; line-height:1.25; padding:.8mm 1.4mm; margin-top:.8mm; }
+  .p2 .signs{ margin-top:1.1mm; }
+  .p2 .signs .sg{ height:9.5mm; padding-top:.9mm; }
+
+  .p2 .tb2 tr.grp td{ position:relative; }
+  .p2 .glbl{ outline:none; display:inline-block; min-width:40mm; }
+  .p2 .glbl:focus{ background:#FFF7DC; border-radius:.6mm; }
+  .p2 .delg{ position:absolute; right:1.5mm; top:50%; transform:translateY(-50%); border:0;
+             background:none; color:#C0392B; font-size:8.5pt; line-height:1; cursor:pointer;
+             opacity:0; font-family:inherit; }
+  .p2 .tb2 tr.grp:hover .delg{ opacity:.75; }
+  .p2 .addg{ font-family:inherit; font-size:5.8pt; color:var(--nv2); background:#fff; cursor:pointer;
+             border:.4pt dashed var(--bd); border-radius:1mm; padding:.3mm 1.6mm; margin-left:1.4mm; }
+  .p2 .addg:hover{ background:var(--nvl); }
+  @media print{ .p2 .delg, .p2 .addg{ display:none!important; } }
+
+  /* khoi hang muc de xuat: co cot, sua chu, them/xoa dong */
+  .p2 .blbl{ outline:none; }
+  .p2 .blbl:focus{ background:rgba(255,255,255,.22); border-radius:.6mm; }
+  .p2 .prophd{ display:flex; gap:2mm; font-size:5.9pt; font-weight:700; color:var(--nv2);
+               letter-spacing:.2px; margin-top:1mm; padding:0 1.6mm; }
+  .p2 .prophd .c1{ flex:0 0 46mm; }
+  .p2 .prophd .c2{ flex:1; }
+  .p2 .prophd .c3{ flex:0 0 26mm; text-align:center; }
+  .p2 .propbox .ln.pl{ display:flex; gap:2mm; align-items:flex-end; padding:.35mm 0;
+                       border-bottom:.3pt dotted #C7CFDC; }
+  .p2 .propbox .ln.pl:last-of-type{ border-bottom:0; }
+  .p2 .propbox .pn{ flex:0 0 46mm; display:flex; }
+  .p2 .propbox .pd{ flex:1; display:flex; min-width:0; }
+  .p2 .propbox .pn .fi, .p2 .propbox .pd .fi{ border-bottom:0; }
+  .p2 .propbox .ck2.pr{ flex:0 0 26mm; justify-content:center; margin-left:0; }
+
+  .p2 .tb2 tr.tot.sub td{ background:#F5F8FD; font-weight:400; color:#3A4453; font-size:6.6pt; }
+  .p2 .tb2 tr.tot.sub td.disc .fi{ text-align:right; font-weight:700; color:#B02020; }
+  .p2 .tb2 tr.tot.grand td{ background:var(--nv); color:#fff; font-size:7.6pt; }
+  .p2 .tb2 td.xn .cb{ width:3.2mm; height:3.2mm; }
+
+  .p2 .tb2 td.ghi{ position:relative; }
+  .p2 .tb2 td.ghi .fi{ border-bottom:0; font-size:6.4pt; }
+  .p2 .tb2 td.ghi .del{ position:absolute; right:-4.5mm; top:50%; transform:translateY(-50%); }
+
+  /* cot nut xoa dong: chi hien tren man hinh */
+  .p2 .tb2 th.dc, .p2 .tb2 td.dc{ width:6mm; text-align:center; padding:0; border-left:0;
+                                  background:#fff; }
+  .p2 .tb2 td.dc .del{ position:static; transform:none; opacity:.35; }
+  .p2 .tb2 tr:hover td.dc .del{ opacity:1; }
+  @media print{ .p2 .tb2 th.dc, .p2 .tb2 td.dc{ display:none!important; } }
+
+  /* ================= TONG MAU XANH - VANG, CHU NOI BAT (TRANG 2) ================= */
+  .p2{ --yl:#F5A81B; --yll:#FFF3DA; --ylb:#E8C583; }
+  .p2 .tb2 th{ background:var(--yll)!important; color:#0E3C7A!important; border-color:var(--ylb)!important;
+               font-weight:800; }
+  .p2 .tb2 tr.grp td{ background:#FFE9B8!important; color:#0E3C7A!important; font-weight:800;
+                      border-color:var(--ylb)!important; }
+  .p2 .tb2 tr.tot td{ background:var(--nv)!important; color:#fff!important; }
+  .p2 .tb2 tr.tot.sub td{ background:var(--yll)!important; color:#0E3C7A!important; }
+  .p2 .tb2 tr.tot.sub td.disc .fi{ color:#B02020; }
+  .p2 .tb2 tr.tot.grand td{ background:var(--yl)!important; color:#0E3C7A!important; font-weight:800;
+                            font-size:8pt; }
+  .p2 .bb2{ box-shadow:inset 0 -1mm 0 var(--yl); }
+  .p2 .kmbar{ background:var(--yll); border-color:var(--yl); }
+  .p2 .lvb.on{ background:var(--nv); color:#fff; }
+  .p2 .tb2 td{ color:#16233A; font-weight:500; }
+  .p2 .fi{ color:#0B1B2E; font-weight:600; }
+  .p2 .prophd{ color:#0E3C7A; }
+  .p2 .propbox{ border-color:var(--ylb); }
+  .p2 .signs .sg{ box-shadow:inset 0 -1.1mm 0 var(--yll); }
+  .p2 .policy{ border-color:var(--ylb); background:#FFFCF5; color:#25314A; }
+
+  /* ================= LETTERHEAD CONG TY ================= */
+  .lh{ display:flex; align-items:center; gap:4mm; }
+  .lh .lg{ width:46mm; flex:0 0 46mm; } .lh .lg img{ width:100%; display:block; }
+  .lh .lhc{ flex:1; text-align:center; }
+  .lh .slg{ font-size:12.6pt; font-weight:800; font-style:italic; color:#1F3C88; letter-spacing:.2px;
+            line-height:1.15; }
+  .lh .lhl{ font-size:6.9pt; color:#25314A; margin-top:.7mm; }
+  .lh .lhl b{ font-weight:700; color:#1F3C88; }
+  .lh .lhl .sep{ color:#8E9AB0; margin:0 1.2mm; }
+  .lh .qr{ width:19mm; flex:0 0 19mm; text-align:center; }
+  .lh .qr img{ width:15mm; display:block; margin:0 auto; }
+  .lh .qr .cap{ font-size:5.6pt; font-weight:700; color:var(--nv); margin-top:.4mm; }
+  .rule2{ height:.9mm; background:var(--nv); margin-top:1.4mm; }
+  .ttl2{ display:flex; align-items:flex-end; gap:3mm; margin-top:1.6mm; }
+  .ttl2 .mn2{ flex:1; text-align:center; font-size:14pt; font-weight:800; color:#14203A;
+              letter-spacing:.3px; white-space:nowrap; }
+  .ttl2 .no2{ flex:0 0 42mm; display:flex; align-items:flex-end; font-size:7.2pt; font-weight:700;
+              color:var(--nv); gap:1.2mm; }
+  .ttl2 .sb2{ flex:0 0 42mm; font-size:6.2pt; color:#5A6473; }
+
+  .ttl2 .sb2{ display:none; }
+  .ttl2 .mn2{ line-height:1.1; }
+  .ttl2 .mn2 em{ display:block; font-style:normal; font-size:6.3pt; font-weight:400; color:#5A6473;
+                 margin-top:.5mm; letter-spacing:0; }
+  .ttl2{ margin-top:1.2mm; }
+
+  .ttl2 .sb2{ display:block!important; visibility:hidden; flex:0 0 42mm; }
+  .lh .slg{ font-size:11.6pt; }
+  .lh .lhl{ font-size:6.5pt; margin-top:.5mm; }
+  .lh .qr img{ width:14mm; }
+  .rule2{ margin-top:1.1mm; }
+
+  /* gach ngang duoi tieu de: lam chim, khong con dam net */
+  .info{ border-top:.4pt solid #D3DCEB!important; padding-top:1.4mm; }
+
+  .p2 .bg{ width:3.4mm!important; height:3.4mm!important; line-height:3.4mm!important;
+           min-width:3.4mm!important; font-size:5.1pt!important; }
+
+  /* bang dich vu chia 2 cot cho can doi trang */
+  .p2 .svc2{ display:flex; gap:3mm; align-items:flex-start; }
+  .p2 .svc2 .col{ flex:1; min-width:0; }
+  .p2 .totbar{ display:flex; gap:2mm; margin-top:1.4mm; }
+  .p2 .totbar > div{ flex:1; display:flex; align-items:center; justify-content:space-between;
+                     padding:1mm 2.4mm; border-radius:1.2mm; font-size:7.2pt; font-weight:700; gap:2mm; }
+  .p2 .totbar .tt1{ background:var(--nv); color:#fff; }
+  .p2 .totbar .tt2{ background:var(--yll); color:#0E3C7A; border:.6pt solid var(--ylb); }
+  .p2 .totbar .tt2 .fi{ flex:0 0 32mm; text-align:right; border-bottom:.5pt dotted #9AA6BC;
+                        color:#B02020; font-weight:700; }
+  .p2 .totbar .tt3{ background:var(--yl); color:#0E3C7A; font-size:8pt; }
+  .p2 .totbar b{ white-space:nowrap; }
+
+  /* can doi lai chieu cao cho day trang */
+  .p2 .tb2 td{ height:2.95mm!important; font-size:6.3pt!important; }
+  .p2 .tb2 td .fi{ min-height:2.2mm!important; font-size:6.4pt!important; }
+  .p2 .tb2 th{ padding:.4mm 1.1mm!important; font-size:6.1pt!important; }
+  .p2 .tb2 tr.grp td{ height:3.5mm!important; font-size:6.3pt!important; }
+  .p2 .propbox .ln.pl{ padding:.35mm 0; }
+  .p2 .propbox .fi{ min-height:3.2mm; }
+  .p2 .acol .ln{ padding:.12mm 0; }
+  .p2 .ck2 i{ width:3.6mm; height:3.6mm; }
+  .p2 .signs .sg{ height:9.5mm; padding-top:.9mm; }
+  .p2 .policy{ font-size:5.7pt; line-height:1.25; padding:.8mm 1.4mm; margin-top:.8mm; }
+  .p2 .barrow2{ margin-top:.85mm; }
+
+  /* khoi dieu kien bao hanh: goi y san, sua/xoa duoc */
+  .p2 .warrbox{ border:.6pt solid var(--ylb); background:#FFFCF5; border-radius:1.2mm;
+                padding:1.1mm 1.8mm; margin-top:.8mm; }
+  .p2 .warrbox .ln.wl2{ padding:.28mm 0; align-items:flex-start; }
+  .p2 .warrbox .fi{ border-bottom:0; font-size:6.2pt; line-height:1.35; color:#25314A; font-weight:400;
+                    min-height:0; }
+  .p2 .warrbox .fi b{ color:#0E3C7A; font-weight:700; }
+  .p2 .warrbox .pnote{ font-size:5.8pt; color:#5A6473; margin-top:.4mm; border-top:.3pt dotted #D9C89E;
+                       padding-top:.5mm; }
+  .p2 .warrbox .tools{ margin-top:.2mm; }
+
+  .p2 .warrbox{ padding:.8mm 1.6mm; }
+  .p2 .warrbox .ln.wl2{ padding:.12mm 0; }
+  .p2 .warrbox .fi{ font-size:5.9pt; line-height:1.3; }
+  .p2 .warrbox .pnote{ font-size:5.5pt; margin-top:.25mm; padding-top:.3mm; }
+  .p2 .propbox .ln.pl{ padding:.2mm 0; }
+  .p2 .ck2 i{ width:3.2mm; height:3.2mm; }
+  .p2 .bb2{ padding:.85mm 4mm; padding-right:8mm; }
+</style>
+</head>
+<body>
+<div class="page cjpage p2">
+  <div class="lh">
+    <div class="lg"><img src="data:image/png;base64,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"></div>
+    <div class="lhc">
+      <div class="slg">CUNG CẤP GIẢI PHÁP Ô TÔ TOÀN DIỆN</div>
+      <div class="lhl">www.philongauto.com <span class="sep">|</span> Nâng Tầm Trải Nghiệm Lái &ndash; An Toàn Trọn Hành Trình</div>
+      <div class="lhl">Hotline: <b>02716 267 777 &ndash; 0975 76 77 78</b> <span class="sep">|</span> <b>Philongtires@gmail.com</b></div>
+    </div>
+    <div class="qr"><img src="data:image/png;base64,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"><div class="cap">TRỢ LÝ Ô TÔ 24/7</div></div>
+  </div>
+  <div class="rule2"></div>
+  <div class="ttl2">
+    <div class="sb2"></div>
+    <div class="mn2">PHIẾU BÁO GIÁ &amp; NGHIỆM THU<em>Trang 2/2 &nbsp;·&nbsp; Báo giá &amp; nghiệm thu theo hạng mục kiểm tra ở trang 1</em></div>
+    <div class="no2">No. <span class="fi" contenteditable="true"></span></div>
+  </div>
+  <div class="info">
+    <div class="r">
+      <div class="f"><b>Biển số xe:</b><span class="fi" contenteditable="true"></span></div>
+      <div class="f"><b>Tên khách hàng:</b><span class="fi" contenteditable="true"></span></div>
+      <div class="f"><b>Điện thoại:</b><span class="fi" contenteditable="true"></span></div>
+      <div class="f"><b>Ngày báo giá / nghiệm thu:</b><span class="fi" contenteditable="true"></span></div>
+    </div>
+  </div>
+  <div class="kmbar">
+    <span class="k1">Số km hiện tại:</span><span class="fi km" contenteditable="true"></span><span class="u">km</span>
+    <span class="arw">&rarr;</span>
+    <span class="k1">Cấp bảo dưỡng đề xuất:</span><span class="lvb" id="lvb">Chưa nhập km</span>
+    <span class="mile" id="mile"></span>
+    <span class="note">Mốc bảo dưỡng: mỗi 5.000 km hoặc 3 tháng &mdash; tùy điều kiện nào đến trước</span>
+  </div>
+  <div class="barrow2"><div class="bb2"><span class="blbl" contenteditable="true">CHI TIẾT DỊCH VỤ / VẬT TƯ</span></div>
+    <div class="due"><span class="hint">I = Kiểm tra &nbsp;·&nbsp; R = Thay thế &nbsp;·&nbsp; A = Khuyến nghị</span>
+      Dự kiến hoàn thành:<span class="fi" contenteditable="true"></span></div></div>
+  <div class="tbwrap"><table class="tb2 svc" data-money><tr><th style="width:8mm">STT</th><th style="width:46mm">HẠNG MỤC DỊCH VỤ / VẬT TƯ</th><th style="width:9mm">IRA</th><th>DIỄN GIẢI</th><th style="width:11mm">SL</th><th style="width:22mm">ĐƠN GIÁ</th><th style="width:24mm">THÀNH TIỀN</th><th class="dc"></th></tr><tr class="grp" data-grpline><td colspan="8"><span class="glbl" contenteditable="true">LEVEL 1 &mdash; DỊCH VỤ CƠ BẢN</span><button class="delg" title="Xóa nhóm này">&times;</button></td></tr><tr data-row data-lv="I|I|I|I"><td class="stt">1</td><td class="nm"><span class="fi" contenteditable="true">Kiểm tra an toàn</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr data-row data-lv="R|R|R|R"><td class="stt">2</td><td class="nm"><span class="fi" contenteditable="true">Dầu động cơ</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr data-row data-lv="|R|R|R"><td class="stt">3</td><td class="nm"><span class="fi" contenteditable="true">Lọc dầu động cơ</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr data-row data-lv="I|I|R|R"><td class="stt">4</td><td class="nm"><span class="fi" contenteditable="true">Lọc gió động cơ</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr data-row data-lv="I|I|I|R"><td class="stt">5</td><td class="nm"><span class="fi" contenteditable="true">Dầu phanh</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr data-row data-lv="I|I|I|I"><td class="stt">6</td><td class="nm"><span class="fi" contenteditable="true">Nước rửa kính</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr data-row data-lv="I|I|R|R"><td class="stt">7</td><td class="nm"><span class="fi" contenteditable="true">Ắc quy</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr data-row data-lv="I|R|R|R"><td class="stt">8</td><td class="nm"><span class="fi" contenteditable="true">Gạt mưa</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr data-row data-lv="I|I|R|R"><td class="stt">9</td><td class="nm"><span class="fi" contenteditable="true">Lọc gió máy lạnh</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr data-row data-lv="I|A|A|A"><td class="stt">10</td><td class="nm"><span class="fi" contenteditable="true">Phanh</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr data-row data-lv="|A|A|A"><td class="stt">11</td><td class="nm"><span class="fi" contenteditable="true">Đảo lốp</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr data-row data-lv="|A|A|A"><td class="stt">12</td><td class="nm"><span class="fi" contenteditable="true">Cân bằng động</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr data-row data-lv="I|A|A|A"><td class="stt">13</td><td class="nm"><span class="fi" contenteditable="true">Góc đặt bánh xe</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr class="grp" data-grpline><td colspan="8"><span class="glbl" contenteditable="true">LEVEL 2 &mdash; DỊCH VỤ MỞ RỘNG</span><button class="delg" title="Xóa nhóm này">&times;</button></td></tr><tr data-row data-lv="I|I|I|I"><td class="stt">1</td><td class="nm"><span class="fi" contenteditable="true">Rotuyn (lái, trụ)</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr data-row data-lv="I|I|I|I"><td class="stt">2</td><td class="nm"><span class="fi" contenteditable="true">Phuộc</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr data-row data-lv="I|I|I|I"><td class="stt">3</td><td class="nm"><span class="fi" contenteditable="true">Bạc đạn bánh xe</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr data-row data-lv="||I|R"><td class="stt">4</td><td class="nm"><span class="fi" contenteditable="true">Dầu hộp số thường</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr data-row data-lv="||I|R"><td class="stt">5</td><td class="nm"><span class="fi" contenteditable="true">Dầu hộp số tự động</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr data-row data-lv="||I|R"><td class="stt">6</td><td class="nm"><span class="fi" contenteditable="true">Dầu vi sai / cầu</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr data-row data-lv="I|I|I|I"><td class="stt">7</td><td class="nm"><span class="fi" contenteditable="true">V-belt / Dây curoa ngoài</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr data-row data-lv="*BUGI|*BUGI|*BUGI|*BUGI"><td class="stt">8</td><td class="nm"><span class="fi" contenteditable="true">Bugi</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr data-row data-lv="I|I|I|R"><td class="stt">9</td><td class="nm"><span class="fi" contenteditable="true">Dầu trợ lực lái</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr data-row data-lv="||R|R"><td class="stt">10</td><td class="nm"><span class="fi" contenteditable="true">Lọc nhiên liệu (diesel)</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr data-row data-lv="|||R"><td class="stt">11</td><td class="nm"><span class="fi" contenteditable="true">Lọc nhiên liệu động cơ xăng</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr data-row data-lv="I|I|I|I"><td class="stt">12</td><td class="nm"><span class="fi" contenteditable="true">Bóng đèn</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr class="grp" data-grpline><td colspan="8"><span class="glbl" contenteditable="true">DỊCH VỤ GIA TĂNG GIÁ TRỊ &mdash; KHUYẾN NGHỊ</span><button class="delg" title="Xóa nhóm này">&times;</button></td></tr><tr data-row data-lv="||A|A"><td class="stt">1</td><td class="nm"><span class="fi" contenteditable="true">Vệ sinh giàn lạnh</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr data-row data-lv="A|A|A|A"><td class="stt">2</td><td class="nm"><span class="fi" contenteditable="true">Vệ sinh hệ thống nhiên liệu</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr data-row data-lv="*KIMPHUN|*KIMPHUN|*KIMPHUN|*KIMPHUN"><td class="stt">3</td><td class="nm"><span class="fi" contenteditable="true">Vệ sinh kim phun trực tiếp</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr data-row data-lv="|A|A|A"><td class="stt">4</td><td class="nm"><span class="fi" contenteditable="true">Súc rửa động cơ</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr data-row data-lv="A|A|A|A"><td class="stt">5</td><td class="nm"><span class="fi" contenteditable="true">Phụ gia nâng cấp nhớt</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr data-row data-lv="||A|A"><td class="stt">6</td><td class="nm"><span class="fi" contenteditable="true">Vệ sinh họng ga</span></td><td class="ira"><span class="bg">&mdash;</span></td><td><span class="fi" contenteditable="true"></span></td><td class="c qty"><span class="fi" contenteditable="true"></span></td><td class="c price"><span class="fi" contenteditable="true"></span></td><td class="c amount">&nbsp;</td><td class="dc"><button class="del" title="Xóa dòng">&times;</button></td></tr><tr class="tot"><td colspan="6">TỔNG CỘNG</td><td class="c total">&nbsp;</td><td class="dc"></td></tr><tr class="tot sub"><td colspan="6">GIẢM GIÁ / KHUYẾN MÃI</td><td class="c disc"><span class="fi" contenteditable="true"></span></td><td class="dc"></td></tr><tr class="tot grand"><td colspan="6">THÀNH TIỀN THANH TOÁN</td><td class="c gtotal">&nbsp;</td><td class="dc"></td></tr></table><div class="tools"><button class="add">+ thêm hạng mục</button><button class="addg">+ thêm nhóm LEVEL</button></div></div>
+  <div class="barrow2"><div class="bb2"><span class="blbl" contenteditable="true">HẠNG MỤC ĐỀ XUẤT TỪ KIỂM TRA AN TOÀN</span></div>
+    <div class="due">Theo kết quả trang 1</div></div>
+  <div class="prophd"><span class="c1">HẠNG MỤC ĐỀ XUẤT</span><span class="c2">LÝ DO / GHI CHÚ TỪ KIỂM TRA</span>
+    <span class="c3">THEO DÕI &nbsp;·&nbsp; LÀM NGAY</span></div>
+  <div class="propbox" data-box><div class="ln pl" data-row><span class="pn"><span class="fi" contenteditable="true"></span></span><span class="pd"><span class="fi" contenteditable="true"></span></span><span class="ck2 pr" data-grp><i class="ok pick" title="Theo dõi"></i><i class="no pick" title="Cần làm ngay"></i></span><button class="del" title="Xóa dòng">&times;</button></div><div class="ln pl" data-row><span class="pn"><span class="fi" contenteditable="true"></span></span><span class="pd"><span class="fi" contenteditable="true"></span></span><span class="ck2 pr" data-grp><i class="ok pick" title="Theo dõi"></i><i class="no pick" title="Cần làm ngay"></i></span><button class="del" title="Xóa dòng">&times;</button></div><div class="ln pl" data-row><span class="pn"><span class="fi" contenteditable="true"></span></span><span class="pd"><span class="fi" contenteditable="true"></span></span><span class="ck2 pr" data-grp><i class="ok pick" title="Theo dõi"></i><i class="no pick" title="Cần làm ngay"></i></span><button class="del" title="Xóa dòng">&times;</button></div>
+    <div class="tools"><button class="add">+ thêm dòng</button></div></div>
+  <div class="barrow2"><div class="bb2"><span class="blbl" contenteditable="true">NGHIỆM THU THEO HẠNG MỤC KIỂM TRA</span></div>
+    <div class="due"><span class="lg2"><i class="ok"></i> ĐẠT</span>
+      <span class="lg2"><i class="no"></i> CHƯA ĐẠT</span></div></div>
+  <div class="accbox">
+    <div class="acol" data-box><div class="ln" data-row><span class="t lbl" contenteditable="true">Lốp 4 bánh: áp suất đúng chuẩn, van kín</span><span class="ck2" data-grp><i class="ok pick"></i><i class="no pick"></i></span><button class="del" title="Xóa dòng">&times;</button></div><div class="ln" data-row><span class="t lbl" contenteditable="true">Má phanh / đĩa phanh: đúng thông số, phanh êm</span><span class="ck2" data-grp><i class="ok pick"></i><i class="no pick"></i></span><button class="del" title="Xóa dòng">&times;</button></div><div class="ln" data-row><span class="t lbl" contenteditable="true">Bánh xe siết đủ lực, nắp van đầy đủ</span><span class="ck2" data-grp><i class="ok pick"></i><i class="no pick"></i></span><button class="del" title="Xóa dòng">&times;</button></div><div class="ln" data-row><span class="t lbl" contenteditable="true">Lốp dự phòng: áp suất đạt, để đúng vị trí</span><span class="ck2" data-grp><i class="ok pick"></i><i class="no pick"></i></span><button class="del" title="Xóa dòng">&times;</button></div><div class="tools"><button class="add">+ thêm dòng</button></div></div>
+    <div class="acol" data-box><div class="ln" data-row><span class="t lbl" contenteditable="true">Gạt mưa: quét sạch, không kêu</span><span class="ck2" data-grp><i class="ok pick"></i><i class="no pick"></i></span><button class="del" title="Xóa dòng">&times;</button></div><div class="ln" data-row><span class="t lbl" contenteditable="true">Đèn trước / đèn sau: sáng đủ, đúng chỉnh</span><span class="ck2" data-grp><i class="ok pick"></i><i class="no pick"></i></span><button class="del" title="Xóa dòng">&times;</button></div><div class="ln" data-row><span class="t lbl" contenteditable="true">Dầu & dung dịch: đủ mức, đã reset bảo dưỡng</span><span class="ck2" data-grp><i class="ok pick"></i><i class="no pick"></i></span><button class="del" title="Xóa dòng">&times;</button></div><div class="ln" data-row><span class="t lbl" contenteditable="true">Ắc quy: khỏe, cọc bình siết chắc</span><span class="ck2" data-grp><i class="ok pick"></i><i class="no pick"></i></span><button class="del" title="Xóa dòng">&times;</button></div><div class="tools"><button class="add">+ thêm dòng</button></div></div>
+    <div class="acol" data-box><div class="ln" data-row><span class="t lbl" contenteditable="true">Lọc gió động cơ / điều hòa, bugi: đúng chủng loại</span><span class="ck2" data-grp><i class="ok pick"></i><i class="no pick"></i></span><button class="del" title="Xóa dòng">&times;</button></div><div class="ln" data-row><span class="t lbl" contenteditable="true">Giảm xóc, chụp bụi, cao su gầm: không hư, không chảy dầu</span><span class="ck2" data-grp><i class="ok pick"></i><i class="no pick"></i></span><button class="del" title="Xóa dòng">&times;</button></div><div class="ln" data-row><span class="t lbl" contenteditable="true">Bulông gầm và sàn xe: siết đủ lực</span><span class="ck2" data-grp><i class="ok pick"></i><i class="no pick"></i></span><button class="del" title="Xóa dòng">&times;</button></div><div class="ln" data-row><span class="t lbl" contenteditable="true">Không bỏ sót ốp, phụ kiện; không quên dụng cụ trên xe</span><span class="ck2" data-grp><i class="ok pick"></i><i class="no pick"></i></span><button class="del" title="Xóa dòng">&times;</button></div><div class="tools"><button class="add">+ thêm dòng</button></div></div>
+  </div>
+  <div class="barrow2"><div class="bb2"><span class="blbl" contenteditable="true">ĐIỀU KIỆN BẢO HÀNH &amp; BÁO GIÁ</span></div>
+    <div class="due"><span class="hint">Gợi ý sẵn &mdash; sửa hoặc xóa dòng tùy cửa hàng</span></div></div>
+  <div class="warrbox" data-box><div class="ln wl2" data-row><span class="fi" contenteditable="true"><b>1. Bảo hành:</b> Phụ tùng thay thế mới bảo hành 06 tháng hoặc 6.000 km, tùy điều kiện nào đến trước.</span><button class="del" title="Xóa dòng">&times;</button></div><div class="ln wl2" data-row><span class="fi" contenteditable="true">Không bảo hành với hư hỏng do tác động bên ngoài hoặc các chi tiết hao mòn trong quá trình sử dụng.</span><button class="del" title="Xóa dòng">&times;</button></div><div class="ln wl2" data-row><span class="fi" contenteditable="true"><b>2. Phụ thu 25%</b> giá trị tiền công đối với vật tư &ndash; phụ tùng quý khách mang đến.</span><button class="del" title="Xóa dòng">&times;</button></div><div class="ln wl2" data-row><span class="fi" contenteditable="true"><b>3. Phát sinh (nếu có)</b> sẽ được thông báo và chỉ thực hiện sau khi quý khách đồng ý.</span><button class="del" title="Xóa dòng">&times;</button></div><div class="ln wl2" data-row><span class="fi" contenteditable="true"><b>4. Báo giá</b> có hiệu lực 07 ngày, đã gồm công lắp đặt, chưa gồm VAT nếu xuất hóa đơn.</span><button class="del" title="Xóa dòng">&times;</button></div>
+    <div class="tools"><button class="add">+ thêm dòng</button></div>
+    <div class="pnote">Thông tin cá nhân quý khách trên phiếu được lưu vào hệ thống quản lý khách hàng và được bảo mật.</div>
+  </div>
+  <div class="signs">
+    <div class="sg"><div class="t">NGƯỜI LẬP BÁO GIÁ</div><div class="s">(ký, ghi rõ họ tên)</div></div>
+    <div class="sg"><div class="t">NHÂN VIÊN KIỂM TRA CUỐI</div><div class="s">(ký, ghi rõ họ tên)</div></div>
+    <div class="sg"><div class="t">KHÁCH HÀNG NGHIỆM THU</div><div class="s">(ký, ghi rõ họ tên)</div></div>
+  </div>
+</div>
+<script>
+(function(){
+  var page = document.querySelector('.p2');
+  if(!page) return;
+  page.addEventListener('click', function(e){
+    var el = e.target.closest('.pick');
+    if(!el || !page.contains(el)) return;
+    var grp = el.closest('[data-grp]');
+    if(grp) grp.querySelectorAll('.pick').forEach(function(o){ if(o!==el) o.classList.remove('on'); });
+    el.classList.toggle('on');
+  });
+  page.addEventListener('click', function(e){
+    var del = e.target.closest('.del');
+    if(del){ var ln = del.closest('[data-row]'); if(ln) ln.remove(); return; }
+    var add = e.target.closest('.add');
+    if(add){
+      var box = add.closest('[data-box]');
+      var rows = box.querySelectorAll('[data-row]');
+      if(!rows.length) return;
+      var clone = rows[rows.length-1].cloneNode(true);
+      clone.querySelectorAll('.pick').forEach(function(o){ o.classList.remove('on'); });
+      clone.querySelectorAll('.fi').forEach(function(o){ o.textContent = ''; });
+      var lb = clone.querySelector('.lbl'); if(lb) lb.textContent = 'Hạng mục mới';
+      add.closest('.tools').parentNode.insertBefore(clone, add.closest('.tools'));
+      if(lb){ lb.focus(); document.execCommand('selectAll', false, null); }
+      return;
+    }
+  });
+  page.addEventListener('paste', function(e){
+    var t = e.target;
+    if(!t || !t.classList || !t.classList.contains('fi')) return;
+    e.preventDefault();
+    var txt = (e.clipboardData || window.clipboardData).getData('text');
+    document.execCommand('insertText', false, txt);
+  });
+  function fit(){
+    page.style.zoom = 1;
+    page.style.minHeight = '0';
+    page.classList.add('fitting');
+    var H = 1118, z = 1;
+    for(var i=0;i<8;i++){
+      var h = page.getBoundingClientRect().height;
+      if(h <= H) break;
+      z = Math.max(0.6, z * (H/h) * 0.995);
+      page.style.zoom = z;
+    }
+    page.classList.remove('fitting');
+  }
+  window.addEventListener('beforeprint', fit);
+  window.addEventListener('afterprint', function(){ page.style.zoom = 1; page.style.minHeight = ''; });
+})();
+</script>
+<script>
+(function(){
+  var page = document.querySelector('.p2');
+  if(!page) return;
+  function num(s){ var v = (s||'').replace(/[^0-9,.-]/g,'').replace(/\./g,'').replace(/,/g,'.');
+                   var n = parseFloat(v); return isNaN(n) ? 0 : n; }
+  function fmt(n){ return n ? Math.round(n).toLocaleString('vi-VN') : ''; }
+  function calc(){
+    var sum = 0;
+    page.querySelectorAll('table[data-money] tr[data-row]').forEach(function(tr){
+      var q = num(tr.querySelector('.qty .fi') && tr.querySelector('.qty .fi').textContent);
+      var p = num(tr.querySelector('.price .fi') && tr.querySelector('.price .fi').textContent);
+      var a = q * p, cell = tr.querySelector('.amount');
+      if(cell) cell.textContent = fmt(a) || ' ';
+      sum += a;
+    });
+    var t = page.querySelector('.total');
+    if(t) t.textContent = (fmt(sum) || '0') + ' đ';
+    var d = page.querySelector('.disc .fi'), g = page.querySelector('.gtotal');
+    if(g){
+      var dv = num(d ? d.textContent : '');
+      g.textContent = (fmt(Math.max(0, sum - dv)) || '0') + ' đ';
+    }
+  }
+  page.addEventListener('click', function(e){
+    var t = e.target.closest('.tbwrap .add, .tbwrap .addg, .tb2 .del, .tb2 .delg');
+    if(!t) return;
+    e.stopPropagation();
+    if(t.classList.contains('delg')){
+      var g = t.closest('tr'); var nx = g.nextElementSibling;
+      while(nx && !nx.classList.contains('grp') && !nx.classList.contains('tot')){
+        var rm = nx; nx = nx.nextElementSibling; rm.remove();
+      }
+      g.remove(); calc(); return;
+    }
+    if(t.classList.contains('addg')){
+      var tb2 = t.closest('.tbwrap').querySelector('table');
+      var gsrc = tb2.querySelector('tr.grp');
+      var isrc = tb2.querySelectorAll('tr[data-row]');
+      if(!gsrc || !isrc.length) return;
+      var gcl = gsrc.cloneNode(true);
+      gcl.querySelector('.glbl').textContent = 'NHÓM MỚI — GHI TÊN TẠI ĐÂY';
+      var icl = isrc[isrc.length-1].cloneNode(true);
+      icl.querySelectorAll('.pick').forEach(function(o){ o.classList.remove('on'); });
+      icl.querySelectorAll('.fi').forEach(function(o){ o.textContent = ''; });
+      icl.classList.remove('hi-r','hi-a');
+      icl.setAttribute('data-lv','|||');
+      var a = icl.querySelector('.amount'); if(a) a.textContent = ' ';
+      var st = icl.querySelector('.stt'); if(st) st.textContent = '1';
+      var bg = icl.querySelector('.bg'); if(bg){ bg.textContent = '–'; bg.className = 'bg na'; }
+      var tr0 = tb2.querySelector('tr.tot');
+      if(tr0){ tr0.parentNode.insertBefore(gcl, tr0); tr0.parentNode.insertBefore(icl, tr0); }
+      else { var last = isrc[isrc.length-1]; last.parentNode.appendChild(gcl); last.parentNode.appendChild(icl); }
+      gcl.querySelector('.glbl').focus();
+      calc(); return;
+    }
+    if(t.classList.contains('del')){
+      var tr = t.closest('tr'); if(tr) tr.remove(); calc(); return;
+    }
+    var tb = t.closest('.tbwrap').querySelector('table');
+    var rows = tb.querySelectorAll('tr[data-row]');
+    if(!rows.length) return;
+    var clone = rows[rows.length-1].cloneNode(true);
+    clone.querySelectorAll('.pick').forEach(function(o){ o.classList.remove('on'); });
+    clone.querySelectorAll('.fi').forEach(function(o){ o.textContent = ''; });
+    var amt = clone.querySelector('.amount'); if(amt) amt.textContent = ' ';
+    var stt = clone.querySelector('.stt'); if(stt) stt.textContent = '';
+    var totRow = tb.querySelector('tr.tot');
+    if(totRow) totRow.parentNode.insertBefore(clone, totRow);
+    else rows[rows.length-1].parentNode.appendChild(clone);
+    var f = clone.querySelector('.fi'); if(f) f.focus();
+    calc();
+  }, true);
+  page.addEventListener('input', calc);
+  page.addEventListener('click', function(e){ if(e.target.closest('.add')) setTimeout(calc, 0); });
+  calc();
+
+  /* ---- chon km -> tinh cap bao duong & goi y hang muc ---- */
+  var LVN = ['Cấp Nhỏ','Cấp Trung bình','Cấp Trung bình lớn','Cấp Lớn'];
+  var MOC = ['5K, 15K, 25K, 35K…','10K, 30K, 50K, 70K…','20K, 60K, 100K…','40K, 80K, 120K…'];
+  function levelOf(km){
+    var k = Math.round(km / 5000);
+    if(k < 1) return -1;
+    var t = k * 5;
+    if(t % 40 === 0) return 3;
+    if(t % 20 === 0) return 2;
+    if(t % 10 === 0) return 1;
+    return 0;
+  }
+  function tagFor(raw, idx, km){
+    if(raw === '*BUGI')    return (km % 40000 < 2500 || km % 40000 > 37500) ? 'R' : 'I';
+    if(raw === '*KIMPHUN') return (km % 30000 < 2500 || km % 30000 > 27500) ? 'A' : '';
+    return raw;
+  }
+  function applyLevel(){
+    var box = page.querySelector('.km');
+    var km  = num(box ? box.textContent : '');
+    var idx = levelOf(km);
+    var lvb = page.querySelector('#lvb'), mile = page.querySelector('#mile');
+    if(!lvb) return;
+    if(idx < 0){
+      lvb.textContent = 'Chưa nhập km'; lvb.classList.remove('on');
+      if(mile) mile.textContent = '';
+      page.querySelectorAll('tr[data-lv]').forEach(function(tr){
+        var b = tr.querySelector('.bg');
+        if(b){ b.textContent = '—'; b.className = 'bg'; }
+        tr.classList.remove('hi-r','hi-a');
+      });
+      return;
+    }
+    lvb.textContent = LVN[idx]; lvb.classList.add('on');
+    if(mile) mile.textContent = '(mốc ' + MOC[idx] + ')';
+    page.querySelectorAll('tr[data-lv]').forEach(function(tr){
+      var tags = (tr.getAttribute('data-lv') || '').split('|');
+      var v = tagFor(tags[idx] || '', idx, km);
+      var b = tr.querySelector('.bg');
+      tr.classList.remove('hi-r','hi-a');
+      if(!b) return;
+      if(v === 'R'){ b.textContent = 'R'; b.className = 'bg r'; tr.classList.add('hi-r'); }
+      else if(v === 'A'){ b.textContent = 'A'; b.className = 'bg a'; tr.classList.add('hi-a'); }
+      else if(v === 'I'){ b.textContent = 'I'; b.className = 'bg i'; }
+      else { b.textContent = '–'; b.className = 'bg na'; }
+    });
+  }
+  page.addEventListener('input', applyLevel);
+  applyLevel();
+})();
+</script>
+<script>
+(function(){
+  var page=document.querySelector('.page.cjpage.p2');
+  if(!page)return;
+  var URL_KEY='d',LEGACY_KEY='data',restoring=true,timer=0,version=0;
+  var rowBase=Object.create(null),groupBase=Object.create(null),fieldBase=[],pickBase=[];
+  var nextRow=1,nextGroup=1,nextBox=1;
+  function fields(){return Array.prototype.filter.call(page.querySelectorAll('[contenteditable="true"]'),function(e){return !e.closest('[data-row]')&&!e.closest('tr[data-grpline]');});}
+  function picks(){return Array.prototype.filter.call(page.querySelectorAll('.pick'),function(e){return !e.closest('[data-row]');});}
+  function boxes(){var a=[];page.querySelectorAll('.tbwrap,[data-box]').forEach(function(e){if(a.indexOf(e)<0)a.push(e);});return a;}
+  function ownerBox(e){var b=e&&e.closest('[data-url-box]');return b?b.dataset.urlBox:'';}
+  function ensureIds(){
+    boxes().forEach(function(e){if(!e.dataset.urlBox)e.dataset.urlBox='b'+nextBox++;});
+    page.querySelectorAll('tr[data-grpline]').forEach(function(e){if(!e.dataset.urlGroup)e.dataset.urlGroup='g'+nextGroup++;});
+    page.querySelectorAll('[data-row]').forEach(function(e){if(!e.dataset.urlId)e.dataset.urlId='r'+nextRow++;});
+  }
+  function text(e){return(e?(e.textContent||''):'').replace(/\u00a0/g,' ').replace(/\r\n/g,'\n');}
+  function rf(r){return Array.from(r.querySelectorAll('[contenteditable="true"]'));}
+  function rp(r){return Array.from(r.querySelectorAll('.pick'));}
+  function capture(){
+    ensureIds();
+    fields().forEach(function(e,i){fieldBase[i]=text(e);});
+    picks().forEach(function(e,i){pickBase[i]=e.classList.contains('on');});
+    page.querySelectorAll('[data-row]').forEach(function(r){rowBase[r.dataset.urlId]={box:ownerBox(r),html:r.outerHTML,f:rf(r).map(text),p:rp(r).map(function(e){return e.classList.contains('on');})};});
+    page.querySelectorAll('tr[data-grpline]').forEach(function(g){groupBase[g.dataset.urlGroup]={box:ownerBox(g),html:g.outerHTML,label:text(g.querySelector('.glbl'))};});
+  }
+  function delta(){
+    ensureIds();var s={v:1,f:[],p:[],r:[],x:[],n:[],g:[],gx:[],ng:[]};
+    fields().forEach(function(e,i){var v=text(e);if(v!==(fieldBase[i]||''))s.f.push([i,v]);});
+    picks().forEach(function(e,i){var v=e.classList.contains('on');if(v!==!!pickBase[i])s.p.push([i,v]);});
+    var rows=Object.create(null);
+    page.querySelectorAll('[data-row]').forEach(function(r){
+      var id=r.dataset.urlId;rows[id]=1;var b=rowBase[id],f=[],p=[];
+      rf(r).forEach(function(e,i){var v=text(e);if(!b||v!==(b.f[i]||''))f.push([i,v]);});
+      rp(r).forEach(function(e,i){var v=e.classList.contains('on');if(!b||v!==!!b.p[i])p.push([i,v]);});
+      if(!b)s.n.push([id,ownerBox(r),r.outerHTML]);else if(f.length||p.length)s.r.push([id,f,p]);
+    });
+    Object.keys(rowBase).forEach(function(id){if(!rows[id])s.x.push(id);});
+    var groups=Object.create(null);
+    page.querySelectorAll('tr[data-grpline]').forEach(function(g){var id=g.dataset.urlGroup;groups[id]=1;var b=groupBase[id],v=text(g.querySelector('.glbl'));if(!b)s.ng.push([id,ownerBox(g),g.outerHTML]);else if(v!==b.label)s.g.push([id,v]);});
+    Object.keys(groupBase).forEach(function(id){if(!groups[id])s.gx.push(id);});
+    return s;
+  }
+  function changed(s){return!!(s.f.length||s.p.length||s.r.length||s.x.length||s.n.length||s.g.length||s.gx.length||s.ng.length);}
+  function b64(bytes){var s='';for(var i=0;i<bytes.length;i++)s+=String.fromCharCode(bytes[i]);return btoa(s).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');}
+  function unb64(s){s=(s||'').replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';var b=atob(s),a=new Uint8Array(b.length);for(var i=0;i<b.length;i++)a[i]=b.charCodeAt(i);return a;}
+  function jsonToken(s){return'j'+b64(new TextEncoder().encode(JSON.stringify(s)));}
+  function decode(token){try{return JSON.parse(new TextDecoder().decode(unb64(token.slice(1))));}catch(e){return null;}}
+  async function pack(s){var raw=new TextEncoder().encode(JSON.stringify(s));if('CompressionStream'in window){try{var c=new CompressionStream('deflate-raw'),w=c.writable.getWriter();w.write(raw);w.close();return'z'+b64(new Uint8Array(await new Response(c.readable).arrayBuffer()));}catch(e){}}return'j'+b64(raw);}
+  async function unpack(token){if(!token)return null;if(token[0]==='j')return decode(token);if(token[0]!=='z')return null;try{var d=new DecompressionStream('deflate-raw'),w=d.writable.getWriter();w.write(unb64(token.slice(1)));w.close();return JSON.parse(new TextDecoder().decode(await new Response(d.readable).arrayBuffer()));}catch(e){return null;}}
+  function node(html){var t=document.createElement('template');t.innerHTML=html;return t.content.firstElementChild;}
+  function box(id){return page.querySelector('[data-url-box="'+id+'"]');}
+  function insert(b,n){if(!b||!n)return;var table=b.querySelector('table'),tools=b.querySelector('.tools'),tot=table&&table.querySelector('tr.tot');if(table&&tot)tot.parentNode.insertBefore(n,tot);else if(tools)tools.parentNode.insertBefore(n,tools);else b.appendChild(n);}
+  function removeGroup(g){var n=g.nextElementSibling;while(n&&!n.matches('tr[data-grpline],tr.tot')){var x=n;n=n.nextElementSibling;x.remove();}g.remove();}
+  function apply(s){if(!s||s.v!==1)return;ensureIds();
+    (s.f||[]).forEach(function(x){var e=fields()[x[0]];if(e)e.textContent=x[1];});
+    (s.p||[]).forEach(function(x){var e=picks()[x[0]];if(e)e.classList.toggle('on',!!x[1]);});
+    (s.x||[]).forEach(function(id){var e=page.querySelector('[data-url-id="'+id+'"]');if(e)e.remove();});
+    (s.gx||[]).forEach(function(id){var e=page.querySelector('[data-url-group="'+id+'"]');if(e)removeGroup(e);});
+    (s.ng||[]).forEach(function(x){var n=node(x[2]),b=box(x[1]);if(n&&b){n.dataset.urlGroup=x[0];insert(b,n);}});
+    (s.n||[]).forEach(function(x){var n=node(x[2]),b=box(x[1]);if(n&&b){n.dataset.urlId=x[0];insert(b,n);}});
+    (s.g||[]).forEach(function(x){var e=page.querySelector('[data-url-group="'+x[0]+'"] .glbl');if(e)e.textContent=x[1];});
+    (s.r||[]).forEach(function(x){var r=page.querySelector('[data-url-id="'+x[0]+'"]');if(!r)return;var f=rf(r),p=rp(r);(x[1]||[]).forEach(function(v){if(f[v[0]])f[v[0]].textContent=v[1];});(x[2]||[]).forEach(function(v){if(p[v[0]])p[v[0]].classList.toggle('on',!!v[1]);});});
+  }
+  async function restore(){var u=new URL(location.href),t=u.searchParams.get(URL_KEY),legacy=u.searchParams.get(LEGACY_KEY),s=t?await unpack(t):null;if(!s&&legacy){try{s=JSON.parse(decodeURIComponent(legacy));}catch(e){}}if(s)apply(s);page.dispatchEvent(new Event('input',{bubbles:true}));restoring=false;}
+  function now(){if(restoring)return;var s=delta(),u=new URL(location.href);if(!changed(s)){u.searchParams.delete(URL_KEY);u.searchParams.delete(LEGACY_KEY);history.replaceState(null,'',u.toString());return;}u.searchParams.delete(LEGACY_KEY);u.searchParams.set(URL_KEY,jsonToken(s));history.replaceState(null,'',u.toString());}
+  async function compress(v){if(restoring||v!==version)return;var s=delta();if(!changed(s))return;var t=await pack(s);if(restoring||v!==version)return;var u=new URL(location.href);u.searchParams.delete(LEGACY_KEY);u.searchParams.set(URL_KEY,t);history.replaceState(null,'',u.toString());}
+  function schedule(){if(restoring)return;version++;var v=version;clearTimeout(timer);now();timer=setTimeout(function(){compress(v);},180);}
+  capture();
+  page.addEventListener('input',schedule);page.addEventListener('change',schedule);
+  page.addEventListener('click',function(e){if(e.target.closest('.pick,.add,.addg,.del,.delg'))setTimeout(schedule,0);});
+  restore();
+})();
+</script>
+</body>
+</html>
