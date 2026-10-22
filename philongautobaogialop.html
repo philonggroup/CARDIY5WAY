@@ -443,7 +443,7 @@ function docSoTienBangChu(n) {
 
   (function() {
     var block = document.getElementById('logo-block'); if (!block) return;
-    var logoUrl = (p.get('logo') || '').trim();
+    var logoUrl = (p.get('logo') || 'https://raw.githubusercontent.com/philonggroup/CARDIY5WAY/main/PLG-logo-print.png').trim();
     if (logoUrl) {
       var img = document.createElement('img');
       img.src = logoUrl; img.alt = 'Logo';

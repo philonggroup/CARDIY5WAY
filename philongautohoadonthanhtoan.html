@@ -75,7 +75,7 @@
         }
         
         .header-logo-wrap { width: 100%; text-align: center; padding-bottom: 10px; margin-bottom: 0; border-bottom: 0.5px solid #ccc; }
-        .header-logo { display: inline-block; max-height: 100px; max-width: 80%; width: auto; object-fit: contain; }
+        .header-logo { display: inline-block; max-height: 56px; max-width: 60%; width: auto; object-fit: contain; }
         .header h1 { font-size: 24px; color: #333; margin-bottom: 2px; }
         .header p  { color: #666; font-size: 14px; }
 
@@ -416,7 +416,7 @@
         const loaiPhieu        = urlParams.get('loaiphieu');
         
         // ===== LOGO =====
-        const logoUrl = urlParams.get('logo');
+        const logoUrl = urlParams.get('logo') || 'https://raw.githubusercontent.com/philonggroup/CARDIY5WAY/main/PLG-logo-print.png';
         if (logoUrl) {
             const logoImg     = document.getElementById('logoImg');
             const tenShopEl   = document.getElementById('tenShop');
