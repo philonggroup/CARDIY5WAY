@@ -253,15 +253,7 @@ thead th{font-size:9.5px}
  * Nguồn số: API Apps Script đọc tab THU_CHI của file BÁO CÁO NGÀY.
  * ==========================================================================*/
 
-/* ===== CAU HINH API - PHI LONG =====
- * Trang nay lay du lieu tu mot Apps Script Web App.
- * MOI APP PHAI DUNG API RIENG (PhiLong Auto goc / PhiLong Auto 06 / app dai ly),
- * doc dung file du lieu cua app do. KHONG dung chung API giua cac app.
- * Cach dung: them &api=<URL web app> vao link mo trang (AppSheet ghep trong action),
- * hoac dien co dinh vao API_MAC_DINH ben duoi.
- */
-const API_MAC_DINH = "";
-const API = (new URLSearchParams(location.search).get("api") || API_MAC_DINH || "").trim();
+var API = 'https://script.google.com/macros/s/AKfycby_D-B7Ku7g7q1v0RDXiDbZQz8b-rA7h2vVd6HxR82bv1C3Z4vA4f9m-wP_nUr7BZchRA/exec';
 
 var rowsAll = [];     /* toàn bộ dòng của kỳ (đã lọc chi nhánh ở API) */
 var dangNap = false;
@@ -1207,12 +1199,5 @@ function lenTrenTatCa(){
 
 </script>
 
-
-<script>
-(function(){var a="";try{a=API}catch(e){}
-if(a)return;
-function s(){var d=document.createElement("div");d.id="plg-no-api";d.style.cssText="background:#b00020;color:#fff;font:bold 14px/1.5 Arial,sans-serif;padding:10px 14px;text-align:center";d.textContent="CHUA CAU HINH API - trang chua gan nguon du lieu. Them &api=<URL Apps Script cua app nay> vao link, hoac dien API_MAC_DINH trong ma nguon.";document.body.insertBefore(d,document.body.firstChild);}
-if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",s);else s();})();
-</script>
 </body>
 </html>
