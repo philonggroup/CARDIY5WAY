@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <html lang="vi"><head>
+<!-- ===== CAU HINH API - PHIEU KIEM TRA XE - PHI LONG =====
+     SUA DUY NHAT dong <script> ngay duoi day de doi noi nhan du lieu cua phieu.
+     CANH BAO: URL mac dinh ben duoi la endpoint cua HE CU (tai khoan Google cu).
+     App PhiLong Auto 06 va app dai ly PHAI thay bang endpoint RIENG cua minh,
+     neu khong du lieu phieu se ghi nguoc ve he cu (2 app se dinh nhau).
+     Co the ghi de tam thoi bang tham so ?api=<URL> tren link mo trang.
+-->
+<script>window.PLG_API_PHIEUKIEMTRA = "https://script.google.com/macros/s/AKfycbzJLpIZ1AnzKLV3R_PdwHH9MYhUGLJKi3VDMhXPxkiUMsbI4kjmFQ6BAX8Lc-YxxMIS/exec";</script>
+
 <meta charset="utf-8">
 <title>PHIẾU KIỂM TRA XE - PHI LONG AUTO</title>
 <style>
@@ -1417,7 +1426,7 @@ body.only-2 #doc .page + .page{page-break-before:auto}
 
   /* Link API mặc định — nhúng sẵn để xưởng KHÔNG phải dán tay trên từng máy.
      Thứ tự ưu tiên: ?api= trên link  >  link đã lưu trong máy  >  link mặc định này. */
-  var API_MAC_DINH='https://script.google.com/macros/s/AKfycbzJLpIZ1AnzKLV3R_PdwHH9MYhUGLJKi3VDMhXPxkiUMsbI4kjmFQ6BAX8Lc-YxxMIS/exec';
+  const API_MAC_DINH = (new URLSearchParams(location.search).get("api") || window.PLG_API_PHIEUKIEMTRA || "").trim();
   /* Mã khoá API: KHÔNG nhúng vào file (repo công khai ai cũng đọc được).
      Lấy theo thứ tự: ?key= trên link  >  mã đã lưu trong máy (hộp ☁).
      Thiếu mã thì Sheet trả "SAI MA KHOA" và KHÔNG ghi gì. */
